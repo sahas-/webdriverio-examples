@@ -1,13 +1,13 @@
 var webdriverio = require('webdriverio');
-var options = { desiredCapabilities: { browserName: 'phantomjs' } };
-var client = webdriverio.remote(options);
+var options = { desiredCapabilities: { browserName: 'chrome' } };
+var browser = webdriverio.remote(options);
 
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import expect from 'expect';
 
 export{
-	client,
+	browser,
 	chai,
 	chaiAsPromised,
 	expect

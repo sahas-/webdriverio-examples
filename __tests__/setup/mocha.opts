@@ -1,7 +1,8 @@
---recursive ./__tests__/**/*.js
+--recursive ./__tests__/**/*_test.js
+--plugins transform-regenerator
 --compilers js:babel-register
 --full-trace
---reporter list
+--reporter spec
 --ui bdd
 --throw-deprecation
 --timeout 20000
