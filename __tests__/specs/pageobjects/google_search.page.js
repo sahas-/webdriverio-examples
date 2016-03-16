@@ -35,7 +35,7 @@ export default class search_page {
             .keys(['Enter'])
             .getUrl()
             .then((url) => {
-                done(url.indexOf("#q=superman") > -1 ? true : false);
+                done(url.indexOf("#q="+searchString) > -1 ? true : false);
             });
     }
 
