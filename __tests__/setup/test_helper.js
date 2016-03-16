@@ -1,5 +1,9 @@
 var webdriverio = require('webdriverio');
-var options = { desiredCapabilities: { browserName: 'chrome' } };
+var options = { 
+	// host: "localhost",
+	// port: "4444",
+	desiredCapabilities: { browserName: 'chrome' } 
+};
 var browser = webdriverio.remote(options);
 
 import chai from 'chai';

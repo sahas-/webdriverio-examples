@@ -5,3 +5,5 @@
 	npm install
 #run test
 	npm run test
+
+(follow this to run selenium stand alone - https://www.npmjs.com/package/selenium-standalone)

@@ -1,54 +1,59 @@
 import {browser} from '../../setup/test_helper';
 import promise from 'promise';
-let _driver;
+import config from '../../test.conf.js'
 
-class search_page {
-    getme(locator) {
-        switch (locator) {
-            case 'searchbox':
-                return browser.element('#lst-ib');
-            case 'resultStatus':
-                return browser.element('#resultStats');
-            default:
-                return "invalid";
-        }
-    }
-    init() {
-        return browser.init().timeoutsImplicitWait(5000);
-    }
-    open() {
-        browser.url('http://www.google.com');
-    }
-    isItGoogle() {
-        return new promise((fulfill, reject) => {
-            browser.waitUntil(()=>{
-                console.log('waiting for render');
-                console.log(browser.getTitle());
-                return this.title().then((t)=>{
-                    console.log(t);
-                    return (t.value === 'Google') ? fulfill("It's Google website") : reject("It's not Google website");
-                })
-            })
-            // browser.title()
-            //     .then((t) => {
-            //         console.log(t.value);
-            //         (t.value === 'Google') ? fulfill("It's Google website") : reject("It's not Google website");
-            //     });
-        });
-    }
-    search(searchString) {
-        try {
-            browser
-                .setValue(getme('searchbox'), searchString)
-                .keys(['Enter']).then()
-            //.element('#resultStats');
-        }
-        catch (error) {
-            console.log("caught exception");
-            reject(false);
-        }
-    }
+let _browser, _configs, _elements;
 
+class search_page_elements {
+    get searchbox() {
+        return '#lst-ib';
+    }
+    get resultStatus() {
+        return '#resultStats';
+    }
 }
 
-module.exports = new search_page();
+export default class search_page {
+    constructor() {
+        browser.endAll();
+        _configs = new config();
+        _browser = browser.init().timeoutsImplicitWait(_configs.defaultTimeout);
+        _elements = new search_page_elements();
+    }
+
+    navigateTo(done) {
+        _browser.url(_configs.baseUrl)
+            .getUrl()
+            .then((url) => {
+                done(url.indexOf("www.google.com") > -1 ? true : false);
+            });
+    }
+
+    search(searchString, done) {
+        _browser
+            .setValue(_elements.searchbox, searchString)
+            .keys(['Enter'])
+            .getUrl()
+            .then((url) => {
+                done(url.indexOf("#q=superman") > -1 ? true : false);
+            });
+    }
+
+    areThereResults(done) {
+        _browser
+            .getText(_elements.resultStatus).then((result) => {
+                let results = this.doesItContain(result,"results");
+                let about = this.doesItContain(result,"About");
+                let seconds = this.doesItContain(result,"seconds");
+                done(results && about && seconds);
+            })
+    }
+    
+    doesItContain(result,searchItem){
+        return (result.indexOf(searchItem)>-1?true:false);
+    }
+    
+    end() {
+        _browser.end();
+    }
+}

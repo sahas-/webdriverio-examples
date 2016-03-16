@@ -5,6 +5,7 @@ import {
     expect
 }from '../../setup/test_helper';
 import google_search_page from '../pageobjects/google_search.page';
+let _google_search_page;
 
 before(() => {
     chai.Should();
@@ -15,34 +16,34 @@ before(() => {
 describe('Feature: getting started with webdriver.io', () => {
     context('Scenario: Navigate to Google', () => {
         before(() => {
-            google_search_page.init.bind(this);
+            _google_search_page = new google_search_page();
         });
-        it('Should open up the browser and navigate to Google', () => {
-            google_search_page.open.call(this);
-            return google_search_page.isItGoogle()
-            .then((msg) => {
-                return chai.assert(true,msg);
-            },(error)=>{                
-                return chai.assert(false,error);
+        
+        it('Should open up the browser and navigate to Google', (done) => {
+            _google_search_page.navigateTo((result)=>{
+                chai.expect(result).to.be.true;
+                done();
             });
            
         });
-        xit('Should be able to perform search', () => {
-            google_search_page.search('superman');
+        
+        it('Should be able to perform search', (done) => {
+            _google_search_page.search("superman", (result)=>{
+                chai.expect(result).to.be.true;
+                done();                
+            });
         });
-        xit('Should contain results', () => {
-            return browser
-                .getText('#resultStats').then((t) => {
-                    chai.expect(t).to.have.string('About');
-                    chai.expect(t).to.have.string('results')
-                    chai.expect(t).to.have.string('seconds)');
-                })
-                .end();
+        
+        it('Should contain results', (done) => {
+            _google_search_page.areThereResults((result)=>{
+                chai.expect(result).to.be.true;
+                done();
+            });
         });
     })
 })
 
 after(() => {
-    browser.close();
+    _google_search_page.end();
 });
 
