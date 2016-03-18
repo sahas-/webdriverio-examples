@@ -4,6 +4,7 @@ import {
 }from '../../setup/test_helper';
 import google_search_page from '../pageobjects/google_search.page';
 import config from '../../test.conf.js'
+import Q from 'q';
 
 let _google_search_page,_configs;
 
@@ -18,14 +19,10 @@ describe('Feature: getting started with webdriver.io', () => {
             it('Should open up the browser, navigate to Google, search and assert search results', (done) => {
                     let _g=_google_search_page;
                     return _g.navigate()
-                           .then(_g.search(_configs.searchTerm).then(_g.areThereResults).finally(done)
-                           .catch((err)=>{
-                               done(err);
-                           })
-                           ,(error)=>{
-                                done(error);
-                            });
-                    
+                           .then(_g.search)
+                           .then(_g.areThereResults)
+                           .then(undefined,(error)=>{console.log(error); done(error)})
+                           .finally(done);
             });            
         })
 })

@@ -30,10 +30,10 @@ export default class search_page {
          return deferred.promise;
             
     }
-    search(searchString) {
+    search() {
         let deferred = Q.defer();
         _browser
-            .setValue(_elements.searchbox, searchString)
+            .setValue(_elements.searchbox, _configs.searchTerm)
             .keys(['Enter'])
             .then(() => {
                 deferred.resolve("search done");                
