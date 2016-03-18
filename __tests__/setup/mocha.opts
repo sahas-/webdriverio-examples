@@ -1,5 +1,4 @@
 --recursive ./__tests__/**/*_test.js
---plugins transform-regenerator
 --compilers js:babel-register
 --full-trace
 --reporter spec

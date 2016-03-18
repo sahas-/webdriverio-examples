@@ -5,4 +5,7 @@ export default class config{
     get defaultTimeout(){
         return 5000;
     }
+    get searchTerm(){
+        return "galaxy";
+    }
 }
