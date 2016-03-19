@@ -1,5 +1,3 @@
-import {browser} from '../../setup/test_helper';
-
 export default class uimap {
     get shoppingLink() {
         return '#lst-ib';
