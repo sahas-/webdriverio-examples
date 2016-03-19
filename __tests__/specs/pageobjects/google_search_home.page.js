@@ -1,22 +1,13 @@
 import {browser,config,Q} from '../../setup/test_helper';
-
+import uimap from '../uimap/google_search_home.uimap';
 let _browser, _configs, _elements;
-
-class search_page_elements {
-    get searchbox() {
-        return '#lst-ib';
-    }
-    get resultStatus() {
-        return '#resultStats';
-    }
-}
 
 export default class search_page {
     constructor() {
         browser.endAll();
         _configs = new config();
         _browser = browser.init().timeoutsImplicitWait(_configs.defaultTimeout);
-        _elements = new search_page_elements();
+        _elements = new uimap();
     }
     get browser(){
         return _browser;
