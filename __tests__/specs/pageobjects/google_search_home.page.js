@@ -1,6 +1,4 @@
-import {browser} from '../../setup/test_helper';
-import config from '../../test.conf.js'
-import Q from 'q';
+import {browser,config,Q} from '../../setup/test_helper';
 
 let _browser, _configs, _elements;
 
@@ -19,6 +17,9 @@ export default class search_page {
         _configs = new config();
         _browser = browser.init().timeoutsImplicitWait(_configs.defaultTimeout);
         _elements = new search_page_elements();
+    }
+    get browser(){
+        return _browser;
     }
     navigate() {
         let deferred = Q.defer();
