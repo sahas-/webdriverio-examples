@@ -1,13 +1,14 @@
-import {browser,config,Q} from '../../setup/test_helper';
-import uimap from '../uimap/google_search_home.uimap';
+import {browser,Q} from '../../setup/test_helper';
+import di from '../di/container';
 let _browser, _configs, _elements;
+
 
 export default class search_page {
     constructor() {
         browser.endAll();
-        _configs = new config();
-        _browser = browser.init().timeoutsImplicitWait(_configs.defaultTimeout);
-        _elements = new uimap();
+        _configs = di.container.config;
+        _elements = di.container.homePage_ui;
+        _browser = browser.init().timeoutsImplicitWait(_configs.defaultTimeout);        
     }
     get browser(){
         return _browser;

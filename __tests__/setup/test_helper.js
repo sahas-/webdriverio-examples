@@ -12,11 +12,11 @@ import expect from 'expect';
 chai.use(chaiAsPromised);
 chai.use(expect);
 import Q from 'q';
-import config from '../test.conf.js'
+import config from '../test.conf';
 
 export{
 	browser,
 	chai,
     Q,
-    config
+    config  
 };

@@ -1,13 +1,13 @@
-import {browser, config, Q} from '../../setup/test_helper';
-import uimap from '../uimap/google_search_shopping.uimap';
+import {browser, Q} from '../../setup/test_helper';
+import di from '../di/container';
 
 let _browser, _configs, _elements;
 
 export default class shopping_page {
     constructor(browser) {
-        _configs = new config();
-        _browser = browser;
-        _elements = new uimap();
+        _configs = di.container.config;
+        _elements = di.container.shoppingPage_ui;
+        _browser = browser;        
     }
     navigate() {
         let deferred = Q.defer();
