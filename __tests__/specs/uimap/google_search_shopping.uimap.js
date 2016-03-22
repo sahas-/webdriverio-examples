@@ -11,7 +11,13 @@ export default class uimap {
     get shoppingTab(){
         return "Shopping";
     }
+    get allTab(){
+        return "All"
+    }
     get results(){
         return ".sh-pr__product-results";
+    }
+    get newPhonesFilter(){
+        return "New items";
     }
 }
