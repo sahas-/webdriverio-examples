@@ -10,7 +10,7 @@ export default class shopping_page {
         _browser = browser;
     }
 
-    navigate() {
+    navigateToShoppingTab() {
         let deferred = Q.defer();
         _browser
             .click("=" + _elements.shoppingTab)
@@ -32,10 +32,18 @@ export default class shopping_page {
                 .then(() => {
                     deferred.resolve();
                 }, (error) => {
-                    console.log(error);
+                    deferred.reject(error);
                 })
         }, 1000);
 
+        return deferred.promise;
+    }
+    end() {
+        let deferred = Q.defer();
+        _browser.end()
+            .then(() => {
+                deferred.resolve();
+            })
         return deferred.promise;
     }
 }

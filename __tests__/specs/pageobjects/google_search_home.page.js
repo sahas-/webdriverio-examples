@@ -18,7 +18,7 @@ export default class search_page {
         _browser.url(_configs.baseUrl)
             .getUrl()
             .then((url) => {
-                (url.indexOf("www.google.com") > -1) ? deferred.resolve("navigated") : deferred.reject("navigation failed");
+                (url.indexOf("www.google.com")>-1) ? deferred.resolve("navigated") : deferred.reject("navigation failed");
             });
          return deferred.promise;
             
@@ -52,6 +52,11 @@ export default class search_page {
     }
 
     end() {
-        _browser.end();
+        let deferred = Q.defer();
+        _browser.end()
+            .then(() => {
+                deferred.resolve();
+            })
+        return deferred.promise;
     }
 }
