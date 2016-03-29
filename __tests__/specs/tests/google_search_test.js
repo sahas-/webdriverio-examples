@@ -27,15 +27,13 @@ describe('Feature: getting started with webdriver.io', () => {
                 .finally(done);
         });
 
-        afterEach(() => {
-            if (!_ex.status.isSuccess & _ex.status.isSuccess !== null) {
-                _page.end()
-                    .then(() => {
-                        process.exit();
-                    })
-                    .catch((error) => {
-                        _ex.handleException(error, "Can't close the browser session !!");
-                    })
+        afterEach((done) => {
+            if (_ex.status.isSuccess === false) {
+                _page.end().then(done)
+                process.exit();
+            }
+            else {
+                done();
             }
         })
     });
@@ -69,25 +67,20 @@ describe('Feature: getting started with webdriver.io', () => {
                     })
             })
         })
-        afterEach(() => {
-            if (!_ex.status.isSuccess & _ex.status.isSuccess !== null) {
-                _closeTheSession();
+        afterEach((done)=>{
+            if (_ex.status.isSuccess === false) {
+                _page.end().then(done);
+                process.exit();
+            }
+            else {
+                done();
             }
         })
 
-        after(() => {
-            _closeTheSession();
-        })
 
-        function _closeTheSession() {
-            _page.end()
-                .then(() => {
-                    process.exit();
-                })
-                .catch((error) => {
-                    _ex.handleException(error, "Can't close the browser session !!");
-                })
-        }
+        after((done) => {
+            _page.end().then(done);
+        })
     })
 
 });
