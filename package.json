@@ -21,7 +21,12 @@
     "mocha-generators": "^1.2.0",
     "object-assign": "^4.0.1",
     "q": "^1.4.1",
+    "wdio-allure-reporter": "0.0.2",
     "wdio-mocha-framework": "^0.2.11",
-    "webdriverio": "^4.0.3"
+    "webdriverio": "^4.0.5"
+  },
+  "devDependencies": {
+    "wdio-allure-reporter": "0.0.2",
+    "wdio-dot-reporter": "0.0.5"
   }
 }

@@ -9,7 +9,7 @@ exports.config = {
     // from which `wdio` was called. Notice that, if you are calling `wdio` from an
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
-   
+
     // host: "localhost",
     // port: 4444,
     specs: [
@@ -42,7 +42,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
-    logLevel: 'verbose',
+    logLevel: 'error',
     //
     // Enables colors for log output.
     coloredLogs: true,
@@ -89,7 +89,7 @@ exports.config = {
     // Test reporter for stdout.
     // The following are supported: dot (default), spec and xunit
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporter: 'spec',
+    reporters: ['dot', 'junit','allure'],
 
     //
     // Some reporter require additional information which should get defined here
@@ -97,14 +97,18 @@ exports.config = {
         //
         // If you are using the "xunit" reporter you should define the directory where
         // WebdriverIO should save all unit reports.
-        outputDir: './TestResults/'
+        outputDir: './junit-xml-results/',
+        allure: {
+            outputDir: './allure-results'
+        }
     },
 
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+        bail: 'true'
     },
 
     //

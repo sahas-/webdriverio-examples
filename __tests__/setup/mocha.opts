@@ -3,5 +3,6 @@
 --full-trace
 --reporter spec
 --ui bdd
+--bail
 --throw-deprecation
 --timeout 20000
