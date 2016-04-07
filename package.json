@@ -4,7 +4,7 @@
   "description": "webdriver.io examples",
   "main": "index.js",
   "scripts": {
-    "test": "wdio ./wdio.conf.js"
+    "test": "node_modules/webdriverio/bin/wdio ./wdio.conf.js"
   },
   "author": "sahas",
   "license": "ISC",
