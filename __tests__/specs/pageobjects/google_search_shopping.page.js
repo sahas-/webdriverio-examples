@@ -11,39 +11,21 @@ export default class shopping_page {
     }
 
     navigateToShoppingTab() {
-        let deferred = Q.defer();
-        _browser
-            .click("=" + _elements.shoppingTab)
-            .click("=" + _elements.phoneModel)
-            .elements(_elements.results)
-            .then((elements) => {
-                (elements.value.length > 0) ? deferred.resolve() : deferred.reject("no such element - " + _elements.results);
-            }, (error) => {
-                deferred.reject(error);
-            })
-        return deferred.promise;
+        _browser.waitUntil("=" + _elements.shoppingTab, 5000);
+        _browser.click("=" + _elements.shoppingTab);
+        return _browser;
     }
 
     filterNewPhones() {
-        let deferred = Q.defer();
-        setTimeout(() => {
-            _browser
-                .click("=" + _elements.newPhonesFilter)
-                .then(() => {
-                    deferred.resolve();
-                }, (error) => {
-                    deferred.reject(error);
-                })
-        }, 1000);
-
-        return deferred.promise;
+        _browser.waitForVisible("=" + _elements.newPhonesFilter, 6000);
+        _browser.click("=" + _elements.newPhonesFilter);
+        return _browser;
     }
-    end() {
-        let deferred = Q.defer();
-        _browser.end()
-            .then(() => {
-                deferred.resolve();
-            })
-        return deferred.promise;
+    filterSpecificModel() {
+        _browser.keys('Pagedown');
+        _browser.pause(2000); //https://github.com/webdriverio/webdriverio/issues/1188
+        _browser.waitForVisible("=" + _elements.phoneModel, 5000);
+        _browser.click("=" + _elements.phoneModel);
+        return _browser;
     }
 }

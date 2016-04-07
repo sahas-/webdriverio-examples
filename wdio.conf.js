@@ -1,5 +1,6 @@
+require('babel-core/register');
 exports.config = {
-    
+
     //
     // ==================
     // Specify Test Files
@@ -8,9 +9,11 @@ exports.config = {
     // from which `wdio` was called. Notice that, if you are calling `wdio` from an
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
-    //
+   
+    // host: "localhost",
+    // port: 4444,
     specs: [
-        './E-E tests/**/*.js'
+        './__tests__/**/google_search_test.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -45,11 +48,11 @@ exports.config = {
     coloredLogs: true,
     //
     // Saves a screenshot to a given path if a command fails.
-    screenshotPath: './errorShots/',
+    //screenshotPath: './errorShots/',
     //
     // Set a base URL in order to shorten url command calls. If your url parameter starts
     // with "/", the base url gets prepended.
-    baseUrl: 'www.facebook.com',
+    //baseUrl: 'www.facebook.com',
     //
     // Default timeout for all waitForXXX commands.
     waitforTimeout: 20000,
@@ -86,8 +89,8 @@ exports.config = {
     // Test reporter for stdout.
     // The following are supported: dot (default), spec and xunit
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporter: 'dot',
-    
+    reporter: 'spec',
+
     //
     // Some reporter require additional information which should get defined here
     reporterOptions: {
@@ -96,15 +99,14 @@ exports.config = {
         // WebdriverIO should save all unit reports.
         outputDir: './TestResults/'
     },
-    
+
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        ui: 'bdd',
-        compilers: ['js:babel-core/register']
+        ui: 'bdd'
     },
-    
+
     //
     // =====
     // Hooks

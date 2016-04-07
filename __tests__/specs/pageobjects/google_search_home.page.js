@@ -1,62 +1,28 @@
-import {browser,Q,config} from '../../setup/test_helper';
+import {config} from '../../setup/test_helper';
 import uimap from '../uimap/google_search_home.uimap';
 let _browser, _configs, _elements;
 
 
 export default class search_page {
     constructor() {
-        browser.endAll();
         _configs = new config();
         _elements = new uimap();
-        _browser = browser.init().timeoutsImplicitWait(_configs.defaultTimeout);        
+        _browser = browser;//browser.init().timeoutsImplicitWait(_configs.defaultTimeout);        
     }
-    get browser(){
-        return _browser;
+    get browser() {
+        return browser;
     }
     navigate() {
-        let deferred = Q.defer();
-        _browser.url(_configs.baseUrl)
-            .getUrl()
-            .then((url) => {
-                (url.indexOf("www.google.com")>-1) ? deferred.resolve("navigated") : deferred.reject("navigation failed");
-            });
-         return deferred.promise;
-            
+        browser.url(_configs.baseUrl);
+    }
+    isItGoogle() {
+        return browser.getUrl();
     }
     search() {
-        let deferred = Q.defer();
-        _browser
-            .setValue(_elements.searchbox, _configs.searchTerm)
-            .keys(['Enter'])
-            .then(() => {
-                deferred.resolve("search done");                
-            })
-        return deferred.promise;
-    }
-
-    areThereResults() {
-        let deferred = Q.defer();
-            _browser
-                .getText(_elements.resultStatus).then((result) => {
-                    let results = (result.indexOf("results") > -1) ? true : false;
-                    let about = (result.indexOf("About") > -1) ? true : false;
-                    let seconds = (result.indexOf("seconds") > -1) ? true : false;
-                    (results && about && seconds) ? deferred.resolve("found expected results") : deferred.reject("didn't find expected results");
-                })            
-        return deferred.promise;
-
-    }
-
-    doesItContain(result, searchItem) {
-        return (result.indexOf(searchItem) > -1 ? true : false);
-    }
-
-    end() {
-        let deferred = Q.defer();
-        _browser.end()
-            .then(() => {
-                deferred.resolve();
-            })
-        return deferred.promise;
+        browser.setValue(_elements.searchbox, _configs.searchTerm);
+        browser.keys('Enter');
+        browser.waitForVisible(_elements.resultStatus,5000);
+        let result = browser.getText(_elements.resultStatus);
+        return result;
     }
 }

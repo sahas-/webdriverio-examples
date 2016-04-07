@@ -4,7 +4,7 @@
   "description": "webdriver.io examples",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --opts ./__tests__/setup/mocha.opts"
+    "test": "wdio ./wdio.conf.js"
   },
   "author": "sahas",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "expect": "^1.15.2",
     "mocha": "^2.4.5",
     "mocha-generators": "^1.2.0",
+    "object-assign": "^4.0.1",
     "q": "^1.4.1",
     "wdio-mocha-framework": "^0.2.11",
     "webdriverio": "^4.0.3"

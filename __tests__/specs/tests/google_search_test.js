@@ -6,83 +6,49 @@ let _ex;
 
 
 describe('Feature: getting started with webdriver.io', () => {
+    //get exceptionHandler instantiated to handle exceptions at one place
     before(() => {
         _ex = di.container.exceptionHandler;
     });
 
-    describe('Simple google search', () => {
+    describe('Google search', () => {
         let _page;
+        //instantiate the page object
         before(() => {
             _page = di.container.home_page;
         })
-
-        it('Should open up the browser, navigate to Google, search and assert search results', (done) => {
-            return _page.navigate()
-                .then(_page.search)
-                .then(_page.areThereResults)
-                .catch((error) => {
-                    _ex.handleException(error, "Navigate to Google"); //get current spec name
-                    done(error);
-                })
-                .finally(done);
-        });
-
-        afterEach((done) => {
-            if (_ex.status.isSuccess === false) {
-                _page.end().then(done)
-                process.exit();
-            }
-            else {
-                done();
-            }
-        })
+        //perform action
+        it('Should open up the browser, navigate to Google, search and assert search results', ()=> {
+            _page.navigate();
+            chai.expect(_page.isItGoogle()).to.contain("www.google.com");
+            let _results =_page.search();
+            chai.expect(_results).to.contain("About");
+            chai.expect(_results).to.contain("results");
+            chai.expect(_results).to.contain("seconds");
     });
 
     describe('Shop from the search results', () => {
         let _page;
-
+        //instantiate the page object
         before(() => {
             _page = di.container.shopping_page;
         })
+        //perform actions
         describe('Shop from Google search', () => {
-            it('Should list relevant products for shopping', (done) => {
-                return _page.navigateToShoppingTab()
-                    .then(() => {
-                        done();
-                    })
-                    .catch((error) => {
-                        _ex.handleException(error, "navigate to shopping tab");
-                    })
+            it('Should list relevant products for shopping', () => {
+                _page.navigateToShoppingTab();
             });
         });
 
         describe('Filter items', () => {
-            it('Should filter unlocked phones', (done) => {
-                return _page.filterNewPhones()
-                    .then(() => {
-                        done();
-                    })
-                    .catch((error) => {
-                        _ex.handleException(error, "filter new phones");
-                    })
+            it('Should filter unlocked phones', () => {
+                _page.filterNewPhones();
+                _page.filterSpecificModel();
             })
-        })
-        afterEach((done)=>{
-            if (_ex.status.isSuccess === false) {
-                _page.end().then(done);
-                process.exit();
-            }
-            else {
-                done();
-            }
-        })
-
-
-        after((done) => {
-            _page.end().then(done);
-        })
+        });
     })
 
+});
 });
 
 
