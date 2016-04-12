@@ -1,5 +1,6 @@
 import {
-    chai
+    chai,
+    envSettings
 }from '../../setup/test_helper';
 import di from '../di/container';
 let _ex;
@@ -19,9 +20,9 @@ describe('Feature: getting started with webdriver.io', () => {
         })
         //perform action
         it('Should open up the browser, navigate to Google, search and assert search results', ()=> {
-            _page.navigate();
+            _page.navigate(envSettings.baseUrl);
             chai.expect(_page.isItGoogle()).to.contain("www.google.com");
-            let _results =_page.search();
+            let _results =_page.search(envSettings.searchTerm);
             chai.expect(_results).to.contain("About");
             chai.expect(_results).to.contain("results");
             chai.expect(_results).to.contain("seconds");

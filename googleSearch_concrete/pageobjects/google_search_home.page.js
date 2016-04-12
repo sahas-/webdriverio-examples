@@ -1,4 +1,4 @@
-import {envSettings} from '../setup/test_helper';
+import settings from '../settings.json';
 import uimap from '../uimap/google_search_home.uimap';
 let _elements;
 
@@ -11,16 +11,16 @@ export default class search_page {
     get browser() {
         return browser;
     }
-    navigate() {
-       browser.url(envSettings.baseUrl);
+    navigate(url) {
+       browser.url(url);
     }
     isItGoogle() {
         return browser.getUrl();
     }
-    search() {
-        browser.setValue(_elements.searchbox, envSettings.searchTerm);
+    search(searchTerm) {
+        browser.setValue(_elements.searchbox,searchTerm);
         browser.keys('Enter');
-        browser.waitForVisible(_elements.resultStatus,envSettings.assertionWaitTime);
+        browser.waitForVisible(_elements.resultStatus,settings._waitUntil);
         let result = browser.getText(_elements.resultStatus);
         return result;
     }
