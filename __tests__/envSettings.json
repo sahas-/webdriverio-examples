@@ -1,0 +1,6 @@
+{
+    "baseUrl":"http://www.google.com",
+    "searchTerm":"galaxy",
+    "phoneModel":"Samsung Note",
+    "assertionWaitTime":5000
+}

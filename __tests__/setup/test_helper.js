@@ -4,10 +4,10 @@ import expect from 'expect';
 chai.use(chaiAsPromised);
 chai.use(expect);
 import Q from 'q';
-import config from '../test.conf';
+import envSettings from '../envSettings.json';
 
 export {
-chai,
-Q,
-config
+    chai,
+    Q,
+    envSettings
 };
