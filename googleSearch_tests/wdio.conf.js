@@ -9,14 +9,11 @@ exports.config = {
     // from which `wdio` was called. Notice that, if you are calling `wdio` from an
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
+
     // host: "localhost",
     // port: 4444,
-    services: ['sauce'],
-    user: "cdk_sahas",
-    key: "25517a3b-469c-4532-9a29-39de11439845",
-    sauceConnect: false,
     specs: [
-        './__tests__/**/google_search_test.js'
+        './**/google_search_test.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -37,8 +34,6 @@ exports.config = {
     //
     capabilities: [{
         browserName: 'chrome'
-    },{
-        browserName:'firefox'
     }],
     //
     // ===================

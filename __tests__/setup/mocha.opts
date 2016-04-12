@@ -1,8 +1,0 @@
---recursive ./__tests__/**/*_test.js
---compilers js:babel-register
---full-trace
---reporter spec
---ui bdd
---bail
---throw-deprecation
---timeout 20000

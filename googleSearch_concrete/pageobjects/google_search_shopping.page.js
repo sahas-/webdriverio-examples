@@ -1,4 +1,4 @@
-import {browser, Q,envSettings} from '../../setup/test_helper';
+import {browser,envSettings} from '../setup/test_helper';
 import uimap from '../uimap/google_search_shopping.uimap';
 
 let  _browser,_waitUntil, _elements;
