@@ -3,3 +3,4 @@ node_modules
 junit-xml-results
 allure-results
 allure-report
+*.tgz
