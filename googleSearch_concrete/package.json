@@ -1,13 +1,13 @@
 {
   "name": "googlesearch_concrete",
-  "version": "1.0.0",
+  "version": "1.0.19",
   "description": "concrete",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/jshint/bin/jshint **/*.js",
-    "bump": "npm config set sign-git-tag true && npm version minor",
-    "package": "npm run lint && npm run bump && npm pack"
+    "bump": "npm config set sign-git-tag true && npm version $ver",
+    "package": "npm run lint && npm pack"
   },
   "keywords": [
     "concrete"
