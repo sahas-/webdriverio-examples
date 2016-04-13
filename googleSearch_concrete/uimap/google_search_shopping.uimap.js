@@ -12,7 +12,7 @@ export default class uimap {
         return "Shopping";
     }
     get allTab(){
-        return "All"
+        return "All";
     }
     get results(){
         return ".sh-pr__product-results";
