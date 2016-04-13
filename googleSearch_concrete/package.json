@@ -1,6 +1,6 @@
 {
   "name": "googlesearch_concrete",
-  "version": "1.0.19",
+  "version": "1.0.0",
   "description": "concrete",
   "main": "index.js",
   "scripts": {
