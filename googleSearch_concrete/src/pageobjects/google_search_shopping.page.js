@@ -1,5 +1,6 @@
-import settings from '../settings.json';
+import settings from '../../settings.json';
 import uimap from '../uimap/google_search_shopping.uimap';
+import Q from 'q';
 
 let  _browser, _elements;
 
@@ -16,9 +17,23 @@ export default class shopping_page {
     }
 
     filterNewPhones() {
-        _browser.waitForVisible("=" + _elements.newPhonesFilter,settings._waitUntil);
-        _browser.click("=" + _elements.newPhonesFilter);
-        return _browser;
+        try{
+            _browser.waitForVisible("=" + _elements.newPhonesFilter,settings._waitUntil)
+            _browser.click("=" + _elements.newPhonesFilter);
+            Q.resolve(_browser);
+        }
+        catch(exception){
+            let error = {
+                isSuccess:false,
+                message: "caught exception while filtering new for new phone",
+                stack: exception,
+            }
+            Q.reject(error);
+        }
+         
+       
+        
+
     }
     filterSpecificModel() {
         _browser.keys('Pagedown');

@@ -1,4 +1,4 @@
-import settings from '../settings.json';
+import settings from '../../settings.json';
 import uimap from '../uimap/google_search_home.uimap';
 let _elements;
 

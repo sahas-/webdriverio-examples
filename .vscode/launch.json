@@ -5,12 +5,12 @@
             "name": "Debug Mocha test",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/node_modules/webdriverio/bin/wdio",
+            "program": "${workspaceRoot}/googleSearch_tests/node_modules/webdriverio/bin/wdio",
             "stopOnEntry": true,
             "args":[
-                "${workspaceRoot}/wdio.conf.js"
+                "${workspaceRoot}/googleSearch_tests/wdio.conf.js"
             ],
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/googleSearch_tests",
             "preLaunchTask": null,
             "runtimeExecutable": null,
             "runtimeArgs": [
