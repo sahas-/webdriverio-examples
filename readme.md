@@ -8,7 +8,8 @@
     Navigate to *_tests directory
     npm install 
     npm link <<package_name>> (package name from the above command)
-#run local selenium standalone server for local development (https://www.npmjs.com/package/selenium-standalone)
+#run local selenium standalone server for local development 
+    ref:https://www.npmjs.com/package/selenium-standalone
     Open new terminal
     Navigate to *_tests directory
     Change startSeleniumServer.sh as appropriate
