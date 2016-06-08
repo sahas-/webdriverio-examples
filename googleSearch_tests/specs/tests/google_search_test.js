@@ -20,9 +20,9 @@ describe('Feature: getting started with webdriver.io', () => {
         })
         //perform action
         it('Should open up the browser, navigate to Google, search and assert search results', ()=> {
-            _page.navigate(envSettings.baseUrl);
-            chai.expect(_page.isItGoogle()).to.contain("www.google.com");
-            let _results =_page.search(envSettings.searchTerm);
+            _page.navigate(browser.options.customConfig.baseUrl);
+            chai.expect(_page.isItGoogle()).to.contain("google.com");
+            let _results =_page.search(browser.options.customConfig.searchTerm);
             chai.expect(_results).to.contain("About");
             chai.expect(_results).to.contain("results");
             chai.expect(_results).to.contain("seconds");

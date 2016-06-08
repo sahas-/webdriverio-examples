@@ -4,8 +4,8 @@
   "description": "webdriver.io examples",
   "main": "index.js",
   "scripts": {
-    "test-local": "node_modules/webdriverio/bin/wdio ./wdio.conf.js",
-    "test-saucelabs": "node_modules/webdriverio/bin/wdio ./wdio.conf.sauce.js"
+    "test-local": "node_modules/webdriverio/bin/wdio ./config/local/wdio.conf.js",
+    "test-saucelabs": "node_modules/webdriverio/bin/wdio ./config/saucelabs/wdio.conf.sauce.js"
   },
   "author": "sahas",
   "license": "ISC",
@@ -18,7 +18,9 @@
     "bottlejs": "^1.2.3",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.2.0",
+    "deepmerge": "^0.2.10",
     "expect": "^1.15.2",
+    "googlesearch_concrete": "*",
     "mocha": "^2.4.5",
     "mocha-generators": "^1.2.0",
     "object-assign": "^4.0.1",
@@ -28,7 +30,7 @@
     "wdio-junit-reporter": "0.0.2",
     "wdio-mocha-framework": "^0.2.11",
     "wdio-sauce-service": "^0.2.2",
-    "webdriverio": "^4.0.5",
-    "googlesearch_concrete":"*"
+    "wdio-selenium-standalone-service": "0.0.4",
+    "webdriverio": "^4.0.5"
   }
 }
