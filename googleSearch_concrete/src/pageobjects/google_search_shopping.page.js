@@ -24,8 +24,7 @@ export default class shopping_page {
     filterSpecificModel() {
         _browser.keys('Pagedown');
         _browser.pause(2000); //https://github.com/webdriverio/webdriverio/issues/1188
-        _browser.
-            _browser.waitForVisible("=" + _elements.phoneModel, settings._waitUntil);
+        _browser.waitForVisible("=" + _elements.phoneModel, settings._waitUntil);
         _browser.click("=" + _elements.phoneModel);
         return _browser;
     }
