@@ -20,7 +20,6 @@
     "chai-as-promised": "^5.2.0",
     "deepmerge": "^0.2.10",
     "expect": "^1.15.2",
-    "googlesearch_concrete": "*",
     "mocha": "^2.4.5",
     "mocha-generators": "^1.2.0",
     "object-assign": "^4.0.1",
