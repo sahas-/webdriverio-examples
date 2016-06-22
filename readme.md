@@ -1,13 +1,15 @@
 #install globals
-	npm install phantomjs -g
-	npm install webdriverio -g
+    npm install phantomjs -g
+    npm install webdriverio -g
 #local development
     Navigate to *_concrete directory 
     npm install
+    npm run build
     npm link (this will create a symbolic link for this concrete package)
     Navigate to *_tests directory
     npm install 
-    npm link <<package_name>> (package name from the above command)
+    npm link <<package_name>> (package name from the above command, googleSearch_concrete)
+    you should see googleSearch_concrete/dist folder inside node_modules.
 #run local selenium standalone server for local development 
     ref:https://www.npmjs.com/package/selenium-standalone
     Open new terminal
