@@ -1,9 +1,16 @@
+
 #install globals
+
     npm install phantomjs -g
+    
     npm install webdriverio -g
+    
 #local development
+
     Navigate to *_concrete directory 
+    
     npm install
+    
     npm run build
     npm link (this will create a symbolic link for this concrete package)
     Navigate to *_tests directory
